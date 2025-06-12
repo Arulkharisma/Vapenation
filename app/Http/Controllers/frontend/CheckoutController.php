@@ -72,23 +72,24 @@ class CheckoutController extends Controller
             $prod->update();
         }
 
-        if(Auth::user()->address1 == NULL)
-        {
-            $user = User::where('id',Auth::id())->first();
-            $user->lname = $request->input('lname');
-            $user->phoneno = $request->input('phoneno');
-            $user->address1 = $request->input('address1');
-            $user->address2 = $request->input('address2');
-            $user->city = $request->input('city');
-            $user->state = $request->input('state');
-            $user->country = $request->input('country');
-            $user->pincode = $request->input('pincode');   
-            $user->update();
-        }
+        // if(Auth::user()->address1 == NULL)
+        // {
+        //     $user = User::where('id',Auth::id())->first();
+        //     $user->lname = $request->input('lname');
+        //     $user->phoneno = $request->input('phoneno');
+        //     $user->address1 = $request->input('address1');
+        //     $user->address2 = $request->input('address2');
+        //     $user->city = $request->input('city');
+        //     $user->state = $request->input('state');
+        //     $user->country = $request->input('country');
+        //     $user->pincode = $request->input('pincode');   
+        //     $user->update();
+        // }
         $cartitems = Cart::where('user_id',Auth::id());
         Cart::destroy($cartitem);
 
         
-        return redirect('/')->with('status',"Order Placed successfully");
+        // return redirect('/')->with('status',"Order Placed successfully");
+        return redirect()->route('payment.page', ['order_id' => $order->id]);
     }
 }

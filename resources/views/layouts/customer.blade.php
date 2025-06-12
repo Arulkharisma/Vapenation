@@ -29,17 +29,18 @@
     <style>
       *{
         font-family: 'Poppins', sans-serif;
-    }
-    .cartblack i
-    {
-      color: black !important;
-    }
-  
-
+      }
+      .cartblack i
+      {
+        color: white !important;
+      }
+      .fa-solid, .fas{
+        color: white !important;
+      }
       .carousel-item{
-    height: 30rem;
-    color: white;
-} 
+        height: 30rem;
+        color: white;
+      } 
 .carousel-item img{
     height: 100%;
     color: white;
@@ -60,15 +61,15 @@ a
  
 
 
- .fixed-top 
+.fixed-top 
 {
+  background-color: #000000 !important;
   height: 4.5rem !important;
   z-index: 5000 !important;
 }
 .navbar>.container-fluid a
 {
-  color: rgba(234,88,11,255) !important;
-  font-size:1.2rem !important;
+  font-size:1rem;
 }
 
 .zoom:hover
@@ -112,11 +113,11 @@ a
 
 .backgroundfooter
 {
-  background:rgba(234,88,11,255) !important;
+  background: rgba(35, 49, 77, 1) !important;
 }
 .backgroundofroutes
 {
-  background:rgba(234,88,11,255) !important;
+  background:#23314D;
   color: white !important;
 }
 .backgroundofroutes a
@@ -137,12 +138,26 @@ a
 }
 .hello input::placeholder
 {
-  color:rgba(234,88,11,255)  !important;
+  color: black
 } 
-#loginblack
-    {
-      color: black !important;
-    }
+
+.navbar-collapse{
+  align-items: center
+}
+
+
+@media only screen and (max-width: 992px) {
+  .navbar-collapse{
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 72px;
+  }
+  .navbar-expand-lg .navbar-nav{
+    align-items: flex-start !important;
+  }
+}
 
 /*   
     .loaders 
@@ -323,7 +338,8 @@ a
         if(scroll < 50){
             $('.fixed-top').css('background', 'transparent');
         } else{
-            $('.fixed-top').css('background', 'white');
+            $('.fixed-top').css('background', '#23314D');
+            $('..navbar>.container-fluid a').css('color', 'white !important');
             $('.navbar>.container-fluid a').css('color', 'rgba(37,33,34,255)');
         }
     });

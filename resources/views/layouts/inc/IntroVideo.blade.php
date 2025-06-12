@@ -1,7 +1,8 @@
 <div class="container-fluid p-0 bg-dark position-relative">
    <div class=" position-relative w-100 h-100  ">
       {{-- <video src="{{asset('images/video.mp4')}}" autoplay loop muted class="w-100 h-100 video positon-absolute top-0 start-0"></video> --}}
-      <img src="{{asset('images/landing page new.jpg')}}"  class="w-100 h-100  positon-absolute top-0 start-0"/>
+      <img src="{{asset('images/banner1.webp')}}"  class="w-100 h-100  positon-absolute top-10 start-0"/>
+      <a href="#newarrival" class="px-4 py-3 rounded text-white border-0" style="background-color: black; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> <i class="fa-solid fa-cart-shopping me-2" aria-hidden="true"></i>Pesan Sekarang</a>
    </div>
    {{-- <div style="border:none;" class="card bg-transparent position-absolute top-50 start-50 translate-middle w-50 h-50 d-flex align-items-center justify-content-center flex-column">
       <h1 style="color:rgba(234,88,11,255) ;font-size:4rem; font-weight:bold; padding:5px; margin:4px; letter-spacing:5px;" >THE OFFICIAL</h1>

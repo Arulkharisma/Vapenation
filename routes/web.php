@@ -15,6 +15,8 @@ use App\Http\Controllers\frontend\UserController;
 use App\Http\Controllers\frontend\contactComplains;
 use Illuminate\support\Facades\Mail;
 use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,6 +62,7 @@ Route::middleware(['auth' ])->group(function () {
     Route::get('cart',[CartController::class , 'viewCart']);
     Route::get('checkout', [CheckoutController::class , 'index']);
     Route::post('place-order',[CheckoutController::class , 'placeOrder']);
+    Route::get('payment/{order_id}', [App\Http\Controllers\frontend\PaymentController::class, 'showPaymentPage'])->name('payment.page');
     Route::get('my-order',[UserController::class , 'index']);
     Route::get('view-order/{id}',[UserController::class , 'viewOrder']);
 });

@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.customer')
+{{-- @extends('layouts.app') --}}
+
 
 @section('content')
 <!-- CSS only -->
@@ -20,20 +22,24 @@ height: 100%;
 }
 }
 </style>
-<section class="vh-100">
+<section class="vh-100 mt-5">
   <div class="container-fluid h-custom">
      <div class="row d-flex justify-content-center align-items-center h-100">
         {{-- <div class="col-md-9 col-lg-6 col-xl-5">
            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
               class="img-fluid" alt="Sample image">
         </div> --}}
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 p-5" style="background-color: #23314D; border-radius: 10px; color: white">
            <form action="{{ route('login') }}" method="POST">
               @csrf
               <div class="d-flex flex-row align-items-center justify-content-center">
-                <h1 >{{ __('Login') }}</h1>
+                <h1 >{{ __('Vapenation') }}</h1>
               </div>
               <br>
+              <div class="d-flex flex-row align-items-center justify-content-center">
+               <h5 >{{ __('Login') }}</h5>
+             </div>
+             <br>
               <!-- Email input -->
               <div class="form-outline mb-4">
                  <label class="form-label" for="form3Example3">{{ __('Email Address') }}</label>
@@ -63,18 +69,18 @@ height: 100%;
                     </label>
                  </div>
                  @if (Route::has('password.request'))
-                 <a href="{{ route('password.request') }}" class="text-body">Forgot password?</a>
+                 <a href="{{ route('password.request') }}" class="text-light small">Forgot password?</a>
                   @endif
               </div>
               <div class="d-flex my-4 justify-content-center flex-column mx-4 mb-3 mb-lg-4">
-               <button type="submit" class="btn btn-outline-primary btn-lg">{{ __('login') }}</button>
+               <button type="submit" class="btn btn-light text-dark fw-bold">{{ __('login') }}</button>
                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{url('/register')}}"
-                 class="link-danger">Register</a></p>
+                 class="fw-bold text-warning text-decoration-underline">Register</a></p>
                </div>
            </form>
         </div>
      </div>
   </div>
-  <div>
+
 </section>
 @endsection

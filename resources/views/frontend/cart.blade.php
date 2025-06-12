@@ -33,7 +33,7 @@
                     <h5>{{$item->products->name}}</h5>
                 </div>
                 <div class="col-md-2 text-center ">
-                    <h5>RS {{$item->products->selling_price}}</h5>
+                    <h5>Rp {{$item->products->selling_price}}</h5>
                 </div>
                 <div class="col-md-3">
                     <input type="hidden" class="prod_id" value="{{$item->prod_id}}">
@@ -61,7 +61,7 @@
         </div>
         <div class="card-footer d-flex flex-column">
             <div class="d-flex align-items-center justify-content-end text-center">
-                <h6 class="float-end">Total Price : RS {{$total}}</h6>
+                <h6 class="float-end">Total Price : Rp {{$total}}</h6>
             </div>
             <hr>
             <div class="d-flex align-items-center justify-content-end">
@@ -70,10 +70,17 @@
         </div>
        
         @else   
-        <div class="card-body d-flex align-items-center justify-content-center flex-column">
-            <h2 class="p-2 m-1">Your <i class="fa fa-shopping-cart"></i>Cart is Empty</h2>
-            <a href="{{url('category')}}" class="btn p-2 m-1 btn-outline-primary float-end">Continue Shopping</a>
+        <div class="card-body text-center py-5">
+            <div class="mb-4">
+                <i class="fa fa-shopping-cart fa-4x text-dark mb-3"></i>
+                <h2 class="fw-bold text-dark">Keranjang Belanjamu Kosong</h2>
+                <p class="text-muted">Sepertinya kamu belum menambahkan produk apa pun ke keranjang. Yuk, jelajahi produk kami sekarang!</p>
+            </div>
+            <a href="{{ url('category') }}" class="btn px-3 py-2 text-white" style="background-color: #23314D;">
+                Lanjut Belanja <i class="fa fa-arrow-right ms-2" style="vertical-align: middle"></i>
+            </a>
         </div>
+        
         @endif
     </div>
     <div class="py-5">

@@ -9,14 +9,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>All Categories</h2>
+                    <h2>Semua Kategori</h2>
                 </div>
                 <div class="row ">
                     @foreach ($category as $cate )
-                        <div class="col-md-4 ">
+                        <div class="card col-md-4 p-0" style="border: none">
                             <a href="{{url(asset('view-category/'.$cate->slug))}}">
                                 <div class="card-body zoom postion-relative" >
-                                    <img src="{{asset('upload/category/'.$cate->image)}}"   class="w-100 lazy rounded" height="200px"  alt="">
+                                    <img src="{{asset('upload/category/'.$cate->image)}}"   class="w-100 lazy rounded" height="350px"  alt="" style="object-fit: cover">
                                     <div class="text-light  position-absolute top-50 start-50  translate-middle">
                                         <h4 style="letter-spacing:3px; ">{{$cate->name}}</h4>
                                     </div>

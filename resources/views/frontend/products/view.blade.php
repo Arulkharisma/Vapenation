@@ -14,7 +14,7 @@
         </h6>
     </div>
   </div>
-  <div class="container">
+  {{-- <div class="container">
     <div class="card shadow product_data">
         <div class="card-body">
             <div class="row">
@@ -24,11 +24,11 @@
                 <div class="col-md-8">
                     <h2 class="mb-0">
                         {{$product->name}}
-                        <label for="" style="font-size: 1rem; background:rgba(234,88,11,255); color:white;" class="float-end badge  trending_tag">{{$product->trending == "1" ? 'Trending': '' }}</label>
+                        <label for="" style="font-size: 1rem;" class="float-end badge text-white bg-dark  trending_tag">{{$product->trending == "1" ? 'Trending': '' }}</label>
                     </h2>
                     <hr>
-                    <label for="" class="me-3">Original Price  : <s>Rs {{$product->original_price}}</s></label>
-                    <label for="" class="fw-bold">Selling Price  : Rs {{$product->selling_price}}</label>
+                    <label for="" class="me-3">Harga Asli  : <s>Rp {{$product->original_price}}</s></label>
+                    <label for="" class="fw-bold">Harga Diskon  : Rp {{$product->selling_price}}</label>
                     <p class="mt-3">
                         {!! $product->small_description !!}
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam labore quibusdam voluptate repudiandae accusamus dicta aut voluptates doloremque perspiciatis beatae!
@@ -36,12 +36,12 @@
                     </p>
                     <hr>
                     @if($product->qty > 0)
-                        <label for="" style="background:rgba(234,88,11,255); color:white;" class="badge">In Stock</label>
+                        <label for="" class="badge bg-dark text-white">In Stock</label>
                     @else
                         <label for="" class="badge bg-danger">Out Of Stock</label>
                     @endif
-                    <div class="row mt-2">
-                        <div class="col-md-2">
+                    <div class="row mt-2 justify-between align-items-center">
+                        <div class="col-lg-3 col-md-3">
                             <input type="hidden" value="{{$product->id}}" class="prod_id">
                             <label for="quantity">Quantity</label>
                             <div class="input-group text-center mb-3">
@@ -50,10 +50,9 @@
                                 <button class="input-group-text increment-btn">+</button>
                             </div>
                         </div>
-                        <div class="col-md-10">
-                            <br/>
+                        <div class="col-lg-9 col-md-9 d-flex justify-content-end">
                             @if($product->qty > 0)
-                            <button class="btn btn-outline-primary me-3 float-start addToCartButton">Add to Cart <i class="fa-solid fa-cart-plus"></i></button>
+                            <button class="px-3 py-2 rounded text-white border-0 " style="background-color: black">Add to Cart <i class="fa-solid fa-cart-plus"></i></button>
                             @endif
                         </div>
                     </div>
@@ -61,7 +60,72 @@
             </div>
         </div>
     </div>
-  </div>
+  </div> --}}
+
+  <div class="container my-5">
+    <div class="card shadow-lg border-0 product_data">
+        <div class="card-body p-4">
+            <div class="row g-4 align-items-start">
+                <!-- Gambar Produk -->
+                <div class="col-md-5 text-center">
+                    <img src="{{ asset('upload/product/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: contain;">
+                </div>
+
+                <!-- Detail Produk -->
+                <div class="col-md-7">
+                    <h2 class="fw-bold text-dark">
+                        {{ $product->name }}
+                        @if($product->trending == "1")
+                            <span class="badge bg-dark text-white ms-2">Trending</span>
+                        @endif
+                    </h2>
+
+                    <div class="my-3">
+                        <span class="text-muted me-3">Harga Asli: <s>Rp {{ $product->original_price }}</s></span>
+                        <span class="fw-bold text-success">Harga Diskon: Rp {{ $product->selling_price }}</span>
+                    </div>
+
+                    <div class="text-muted small mb-3" style="line-height: 1.6">
+                        {!! $product->small_description !!}
+                    </div>
+
+                    <hr>
+
+                    <!-- Stok -->
+                    <div class="mb-3">
+                        @if($product->qty > 0)
+                            <span class="badge bg-dark text-white">In Stock</span>
+                        @else
+                            <span class="badge bg-danger">Out Of Stock</span>
+                        @endif
+                    </div>
+
+                    <!-- Kuantitas & Tombol -->
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 col-md-5 mb-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <div class="input-group">
+                                <button class="input-group-text decrement-btn bg-light border">-</button>
+                                <input type="text" readonly name="quantity" value="1" class="form-control text-center quantity-input bg-white border">
+                                <button class="input-group-text increment-btn bg-light border">+</button>
+                            </div>
+                            <input type="hidden" value="{{ $product->id }}" class="prod_id">
+                        </div>
+                        <div class="col-lg-8 col-md-7 text-end">
+                            @if($product->qty > 0)
+                                <button class="btn text-white px-4 py-2 addToCartButton" style="background-color: #000;">
+                                    Add to Cart <i class="fa-solid fa-cart-plus ms-1"></i>
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
   <div class="py-2">
     
   </div>
@@ -92,11 +156,6 @@
                 success: function(response)
                 {
                     if(response.status === "Please Login First...")
-                    {
-
-                        swal("Oops...", `${response.status}`, "error");
-                    }
-                    else if(response.status === "Please Verify you Email")
                     {
 
                         swal("Oops...", `${response.status}`, "error");

@@ -16,36 +16,25 @@ class CartController extends Controller
         $product_id  = $request->input('product_id');
         $product_qty = $request->input('product_qty');
 
-        if(Auth::check())
-        {
-            $user  = Auth::user();
-            if($user->hasVerifiedEmail())
-            {
-                $product_check = Product::where('id',$product_id)->first();
-                if($product_check)
-                {
-                    if(Cart::where('prod_id',$product_id)->where('user_id',Auth::id())->exists())
-                    {   
-                       return response()->json(['status'=> $product_check->name." Already In Cart"]);
-                    }
-                    else
-                    {
-                        $cartItem = new Cart();
-                        $cartItem->prod_id = $product_id;
-                        $cartItem->user_id = Auth::id();
-                        $cartItem->prod_qty = $product_qty;
-                        $cartItem->save();
-                        return response()->json(['status' => $product_check->name." Added to Cart"]);
-                    }
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            $product_check = Product::where('id', $product_id)->first();
+            if ($product_check) {
+                if (Cart::where('prod_id', $product_id)->where('user_id', Auth::id())->exists()) {
+                    return response()->json(['status' => $product_check->name . " Already In Cart"]);
+                } else {
+                    $cartItem = new Cart();
+                    $cartItem->prod_id = $product_id;
+                    $cartItem->user_id = Auth::id();
+                    $cartItem->prod_qty = $product_qty;
+                    $cartItem->save();
+                    return response()->json(['status' => $product_check->name . " Added to Cart"]);
                 }
             }
-            else
-            {
-                return response()->json(['status' => "Please Verify you Email"]);
-            }
-        }
-        else
-        {
+
+            return response()->json(['status' => "Product Not Found"]);
+        } else {
             return response()->json(['status' => "Please Login First..."]);
         }
     }
@@ -58,20 +47,12 @@ class CartController extends Controller
     {
         if(Auth::check())
         {
-            $user  = Auth::user;
-            if($user->hasVerifiedEmail())
-            {
-                $prod_id  = $request->input('prod_id');
-                if(Cart::where('prod_id',$prod_id)->where('user_id',Auth::id())->exists())
-                {
-                    $cartItem =Cart::where('prod_id',$prod_id)->where('user_id',Auth::id())->first();
-                    $cartItem->delete();
-                    return response()->json(['status'=>"Product Deleted successfully"]);
-                }
-            }
-            else
-            {
-                return response()->json(['status' => "Please Verify Your Email"]);
+            $user  = Auth::user();
+            $prod_id  = $request->input('prod_id');
+            if (Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()) {
+                $cartItem = Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
+                $cartItem->delete();
+                return response()->json(['status' => "Product Deleted successfully"]);
             }
         }
         else

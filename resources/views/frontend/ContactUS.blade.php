@@ -1,114 +1,159 @@
 @extends('layouts.customer')
 
-
-@section('title')
-   Pain & Gain
-@endsection
-
+@section('title', 'Hubungi Kami - VapeNation')
 
 @section('content')
+<style>
+    .contact-container {
+        background-color: #f8f9fc;
+        padding: 60px 20px;
+    }
 
-<div class="py-5"></div>
-<div class="container">
-    <!--Section: Contact v.2-->
-<section class="mb-4">
+    .contact-heading {
+        text-align: center;
+        color: #23314D;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
 
-    <!--Section heading-->
-    <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
-    <!--Section description-->
-    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
-        a matter of hours to help you.</p>
+    .contact-description {
+        text-align: center;
+        color: #555;
+        max-width: 600px;
+        margin: 0 auto 40px;
+        font-size: 1rem;
+    }
 
-    <div class="row">
+    .contact-form {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.05);
+        max-width: 800px;
+        margin: 0 auto;
+    }
 
-        <!--Grid column-->
-        <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" >
-                <!--Grid row-->
-                <div class="row">
+    .form-label {
+        font-weight: 600;
+        color: #23314D;
+    }
 
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="name" value="" name="name" required class="form-control">
-                            <label for="name" class="">Your name</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
+    .form-control, textarea {
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 0.95rem;
+        padding: 10px 14px;
+    }
 
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="email" value=""    name="email" required class="form-control">
-                            <label for="email" class="">Your email</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
+    .form-control:focus, textarea:focus {
+        border-color: #23314D;
+        box-shadow: 0 0 0 0.15rem rgba(35, 49, 77, 0.2);
+    }
 
-                </div>
-                <!--Grid row-->
+    .btn-primary-custom {
+        background-color: #23314D;
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: 0.3s ease;
+    }
 
-                <!--Grid row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="md-form mb-0">
-                            <input type="text" id="subject" value="" name="subject" required class="form-control">
-                            <label for="subject" class="">Subject</label>
-                        </div>
-                    </div>
-                </div>
-                <!--Grid row-->
+    .btn-primary-custom:hover {
+        background-color: #1c2537;
+    }
 
-                <!--Grid row-->
-                <div class="row">
+    .info-section {
+        margin-top: 60px;
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
 
-                    <!--Grid column-->
-                    <div class="col-md-12">
+    .info-item {
+        margin-bottom: 20px;
+    }
 
-                        <div class="md-form">
-                            <textarea type="text" id="message" value="" name="message" required rows="2" class="form-control md-textarea"></textarea>
-                            <label for="message">Your message</label>
-                        </div>
+    .info-item h5 {
+        color: #23314D;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
 
-                    </div>
-                </div>
-                <!--Grid row-->
+    .info-item p {
+        margin: 0;
+        color: #555;
+    }
 
-            </form>
+    @media (max-width: 768px) {
+        .contact-form, .info-section {
+            padding: 20px;
+        }
+    }
+</style>
 
-            <div class="text-center text-md-left">
-                <a class="w-100 p-2 message btn btn-outline-primary" type="button">SEND MESSAGE</a>
+<div class="contact-container mt-5">
+    <h2 class="contact-heading">Hubungi Kami</h2>
+    <p class="contact-description">Punya pertanyaan seputar produk atau pemesanan? Tim VapeNation siap membantu Anda. Silakan isi formulir di bawah ini dan kami akan segera menghubungi Anda.</p>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nama lengkap Anda" required>
             </div>
-            <div class="status"></div>
-        </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
-        <div class="col-md-3 text-center">
-            <ul class="list-unstyled mb-0">
-                <li><i class="fas fa-map-marker-alt fa-2x"></i>
-                    <p>Wah Cantt, CA 94126, PAKISTAN</p>
-                </li>
+            <div class="mb-3">
+                <label for="email" class="form-label">Alamat Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+            </div>
 
-                <li><i class="fas fa-phone mt-4 fa-2x"></i>
-                    <p>+ 92 313 5473241</p>
-                </li>
+            <div class="mb-3">
+                <label for="subject" class="form-label">Subjek</label>
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Judul pesan" required>
+            </div>
 
-                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-                    <p>mrmoiz.dev@gmail.com</p>
-                </li>
-            </ul>
-        </div>
-        <!--Grid column-->
+            <div class="mb-4">
+                <label for="message" class="form-label">Pesan</label>
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Tulis pesan Anda..." required></textarea>
+            </div>
 
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary-custom">Kirim Pesan</button>
+            </div>
+        </form>
     </div>
 
-</section>
-<!--Section: Contact v.2-->
-</div>
-<div class="py-5"></div>
+    <!-- Informasi Kontak -->
+    <div class="info-section">
+        <div class="info-item">
+            <h5>Alamat Toko</h5>
+            <p>Jl. Vape Sejahtera No. 45, Jakarta Selatan, DKI Jakarta</p>
+        </div>
 
-    
+        <div class="info-item">
+            <h5>Telepon</h5>
+            <p>+62 812-3456-7890</p>
+        </div>
+
+        <div class="info-item">
+            <h5>Email</h5>
+            <p>support@vapenation.id</p>
+        </div>
+
+        <div class="info-item">
+            <h5>Jam Operasional</h5>
+            <p>Senin - Sabtu, 10.00 - 21.00 WIB</p>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('scripts')
