@@ -18,12 +18,12 @@
                             <h5>Basic Detail</h5>
                             <hr>
                             <div class="row checkout-form">
-                                <div class="col-md-6 my-2">
+                                {{-- <div class="col-md-6 my-2">
                                     <label for="firstname">First Name</label>
                                     <input type="text" name="fname" class="form-control" value="{{Auth::user()->name}}" placeholder="First Name" required>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6  my-2">
-                                    <label for="firstname">Last Name</label>
+                                    <label for="firstname">Name</label>
                                     <input type="text" name="lname" class="form-control" value="{{Auth::user()->name}}"   placeholder="First Name" required>
                                 </div>
                                 <div class="col-md-6  my-2">
