@@ -28,12 +28,12 @@ class CategoriesController extends Controller
             $ext = $file->getClientOriginalExtension();
             $fileName = time().'.'.$ext;
             // Originallllll
-            $file->move(public_path('category'), $fileName);
-            $category->image = $fileName;
+            // $file->move(public_path('category'), $fileName);
+            // $category->image = $fileName;
 
             // opsi keduaaaaaaaaa
-            // $file->storeAs('public/category', $fileName);
-            // $category->image = 'storage/category/' . $fileName;
+            $file->storeAs('public/category', $fileName);
+            $category->image = 'storage/category/' . $fileName;
         }
 
         $category->name = $request->input('name');

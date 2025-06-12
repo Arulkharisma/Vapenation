@@ -15,6 +15,7 @@ use App\Http\Controllers\frontend\UserController;
 use App\Http\Controllers\frontend\contactComplains;
 use Illuminate\support\Facades\Mail;
 use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -47,6 +48,10 @@ Route::get('/email', function(){
     return new WelcomeMail();
 });
 
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+    return 'Storage linked successfully!';
+});
 
 Route::post('add-to-cart',[CartController::class,'addProduct']);
 Route::post('delete-cart-item',[CartController::class,'deleteProduct']);
