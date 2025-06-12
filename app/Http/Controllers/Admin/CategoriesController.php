@@ -26,18 +26,8 @@ class CategoriesController extends Controller
             $file =  $request->File('image');
             $ext = $file->getClientOriginalExtension();
             $fileName = time().'.'.$ext;
-            $file->move(public_path('upload/category'), $fileName);
-            // $file->move('upload/category',$fileName);
+            $file->move('upload/category',$fileName);
             $category->image = $fileName;
-        }
-        $uploadPath = public_path('upload/category');
-
-        if (!File::exists($uploadPath)) {
-            File::makeDirectory($uploadPath, 0755, true);
-        }
-
-        if (!is_writable($uploadPath)) {
-            return "Folder tidak bisa ditulis: $uploadPath";
         }
 
         $category->name = $request->input('name');
@@ -72,8 +62,10 @@ class CategoriesController extends Controller
             $file =  $request->File('image');
             $ext = $file->getClientOriginalExtension();
             $fileName = time().'.'.$ext;
-            $file->move('upload/category',$fileName);
-            $category->image = $fileName;
+            // $file->move('upload/category',$fileName);
+            // $category->image = $fileName;
+            $file->storeAs('public/category', $fileName); // disimpan di storage/app/public/category
+            $category->image = 'storage/category/' . $fileName; // akan diakses via /storage/category/...
         }
         $category->name = $request->input('name');
         $category->slug = $request->input('slug');
