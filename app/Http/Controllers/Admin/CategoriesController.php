@@ -26,8 +26,10 @@ class CategoriesController extends Controller
             $file =  $request->File('image');
             $ext = $file->getClientOriginalExtension();
             $fileName = time().'.'.$ext;
-            $file->move('upload/category',$fileName);
-            $category->image = $fileName;
+            // $file->move('upload/category',$fileName);
+            // $category->image = $fileName;
+            $file->storeAs('public/category', $fileName); // disimpan di storage/app/public/category
+            $category->image = 'storage/category/' . $fileName; // akan diakses via /storage/category/...
         }
 
         $category->name = $request->input('name');
@@ -62,10 +64,8 @@ class CategoriesController extends Controller
             $file =  $request->File('image');
             $ext = $file->getClientOriginalExtension();
             $fileName = time().'.'.$ext;
-            // $file->move('upload/category',$fileName);
-            // $category->image = $fileName;
-            $file->storeAs('public/category', $fileName); // disimpan di storage/app/public/category
-            $category->image = 'storage/category/' . $fileName; // akan diakses via /storage/category/...
+            $file->move('upload/category',$fileName);
+            $category->image = $fileName;
         }
         $category->name = $request->input('name');
         $category->slug = $request->input('slug');
