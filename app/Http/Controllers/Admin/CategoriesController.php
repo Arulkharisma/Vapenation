@@ -33,7 +33,7 @@ class CategoriesController extends Controller
 
             // opsi keduaaaaaaaaa
             $file->storeAs('public/category', $fileName);
-            $category->image = 'storage/category/' . $fileName;
+            $category->image = $fileName;
         }
 
         $category->name = $request->input('name');
