@@ -25,7 +25,7 @@
                     <td >{{$item->name}}</td>
                     <td >{{$item->description}}</td>
                     <td class="col-md-3 ">
-                        <img src="{{ asset('storage/category/' . $item->image) }}" class="w-50 "  style="height: 100px !important" alt="Image Not Found">
+                        <img src="{{ asset($item->image) }}" class="w-50 "  style="height: 100px !important" alt="Image Not Found">
                     </td>
                     <td>
                         <a class="btn btn-primary" href="{{url('edit-category/'.$item->id)}}">Edit</a>
