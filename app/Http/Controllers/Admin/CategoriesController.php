@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class CategoriesController extends Controller
 {
@@ -26,10 +27,22 @@ class CategoriesController extends Controller
             $file =  $request->File('image');
             $ext = $file->getClientOriginalExtension();
             $fileName = time().'.'.$ext;
+            // Originallllll
             // $file->move('upload/category',$fileName);
             // $category->image = $fileName;
-            $file->storeAs('public/category', $fileName); // disimpan di storage/app/public/category
-            $category->image = 'storage/category/' . $fileName; // akan diakses via /storage/category/...
+
+            // opsi keduaaaaaaaaa
+            // $file->storeAs('public/category', $fileName);
+            // $category->image = 'storage/category/' . $fileName;
+
+            // ✅ Pastikan foldernya ada
+            Storage::makeDirectory('public/category');
+
+            // ✅ Simpan file ke storage/app/public/category
+            $file->storeAs('public/category', $fileName);
+
+            // ✅ Simpan path untuk digunakan di view
+            $category->image = 'storage/category/' . $fileName;
         }
 
         $category->name = $request->input('name');
