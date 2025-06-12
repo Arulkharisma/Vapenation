@@ -36,11 +36,6 @@ Route::get('view-category/{cate_slug}/{prod_slug}',[FrontController::class ,  'p
 Route::get('view-product/{prod_slug}',[FrontController::class ,  'eachProdView']);
 
 
-
-
-
-
-
 Auth::routes(['verify' => true]);
 
 Route::get('/email', function(){
@@ -48,10 +43,10 @@ Route::get('/email', function(){
     return new WelcomeMail();
 });
 
-Route::get('/linkstorage', function () {
-    Artisan::call('storage:link');
-    return 'Storage linked successfully!';
-});
+// Route::get('/linkstorage', function () {
+//     Artisan::call('storage:link');
+//     return 'Storage linked successfully!';
+// });
 
 Route::post('add-to-cart',[CartController::class,'addProduct']);
 Route::post('delete-cart-item',[CartController::class,'deleteProduct']);
