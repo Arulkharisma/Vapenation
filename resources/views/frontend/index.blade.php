@@ -41,14 +41,14 @@
     </div>
     <div class="py-5" id="products">
         <div class="container">
-            <div class="row justify-center">
+            <div class="row justify-content-center" style="row-gap: 10px">
                 @foreach ($product as $item )
                 <div class="col-md-4 col-lg-3 col-sm-10 mt-2">
                         <a  class="d-flex link-dark w-100"  href="{{url(asset('view-product/'.$item->slug))}}" style="height: 100%">
                             <div class="card hello-card w-80 h-full">
                                 <img src="{{asset('storage/product/'.$item->image)}}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h6 class="card-title">{{$item->name}}</h6>
+                                    <h6 class="card-title text-center">{{$item->name}}</h6>
                                         <span href="#" class=" pe-auto float-start">Rp <s>{{$item->original_price}}</s></span>
                                         <span href="#" class=" pe-auto float-end">Rp {{$item->selling_price}}</span>
                                 </div>

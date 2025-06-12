@@ -88,7 +88,7 @@
                                 </tbody>
                             </table>
                         <hr>
-                        <button type="submit" class="btn btn-outline-primary float-end">Place Order</button>
+                        <button type="submit" class="btn float-end text-white" style="background-color: #23314D">Place Order</button>
                         </div>
                     </div>
                 </div>

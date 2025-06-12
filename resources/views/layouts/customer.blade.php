@@ -63,7 +63,7 @@ a
 
 .fixed-top 
 {
-  background-color: #000000 !important;
+  background-color: #23314D !important;
   height: 4.5rem !important;
   z-index: 5000 !important;
 }
@@ -117,12 +117,12 @@ a
 }
 .backgroundofroutes
 {
-  background:#23314D;
+  background:#F7AD19;
   color: white !important;
 }
 .backgroundofroutes a
 {
-  color: white !important;
+  color: whitesmoke !important;
 }
  .hello 
 {

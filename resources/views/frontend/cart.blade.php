@@ -40,9 +40,9 @@
                     @if($item->products->qty >= $item->prod_qty)
                     <label for="quantity">Quantity</label>
                     <div class="input-group text-center mb-3" style="width:8.125rem">
-                        <button class="input-group-text changeQuantity decrement-btn">-</button>
+                        <button class="input-group-text changeQuantity decrement-btn text-white" style="background-color: #23314D">-</button>
                         <input type="text" value="{{$item->prod_qty}}" readonly class="form-control bg-light quantity_input text-center">
-                        <button class="input-group-text changeQuantity increment-btn">+</button>
+                        <button class="input-group-text changeQuantity increment-btn text-white" style="background-color: #23314D">+</button>
                     </div>
                     @php
                     $total += $item->products->selling_price * $item->prod_qty;
@@ -65,7 +65,7 @@
             </div>
             <hr>
             <div class="d-flex align-items-center justify-content-end">
-                <a href="{{url('checkout')}}" class="btn btn-outline-success float-end ">Check out</a>
+                <a href="{{url('checkout')}}" class="btn float-end text-white" style="background-color: #23314D">Check out</a>
             </div>
         </div>
        

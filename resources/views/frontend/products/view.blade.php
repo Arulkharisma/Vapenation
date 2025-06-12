@@ -76,7 +76,7 @@
                     <h2 class="fw-bold text-dark">
                         {{ $product->name }}
                         @if($product->trending == "1")
-                            <span class="badge bg-dark text-white ms-2">Trending</span>
+                            <span class="badge text-white ms-2" style="font-size: small; background-color: #23314D">Trending</span>
                         @endif
                     </h2>
 
@@ -94,7 +94,7 @@
                     <!-- Stok -->
                     <div class="mb-3">
                         @if($product->qty > 0)
-                            <span class="badge bg-dark text-white">In Stock</span>
+                            <span class="badge text-white" style="background-color: #23314D">In Stock</span>
                         @else
                             <span class="badge bg-danger">Out Of Stock</span>
                         @endif
@@ -113,7 +113,7 @@
                         </div>
                         <div class="col-lg-8 col-md-7 text-end">
                             @if($product->qty > 0)
-                                <button class="btn text-white px-4 py-2 addToCartButton" style="background-color: #000;">
+                                <button class="btn text-white px-4 py-2 addToCartButton" style="background-color: #23314D;">
                                     Add to Cart <i class="fa-solid fa-cart-plus ms-1"></i>
                                 </button>
                             @endif
