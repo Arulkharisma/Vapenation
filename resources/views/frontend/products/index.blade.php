@@ -27,7 +27,7 @@
                         <div class="col-md-4 col-lg-3 col-sm-10 mt-2">
                             <a class="d-flex link-dark w-100" href="{{url(asset('view-category/'.$category->slug.'/'.$prod->slug))}}" style="height: 100%">
                                 <div class="card hello-card w-80 h-full">
-                                    <img src={{asset('upload/product/'.$prod->image)}} alt="no-image">
+                                    <img src={{asset('storage/product/'.$prod->image)}} alt="no-image">
                                     <div class="card-body">
                                         <h5>{{$prod->name}}</h5>
                                         <span class="pe-auto float-start">Rp {{ $prod->selling_price }}</span>
