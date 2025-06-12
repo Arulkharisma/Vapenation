@@ -29,7 +29,13 @@ class ProductController extends Controller
             $file =  $request->File('image');
             $ext = $file->getClientOriginalExtension();
             $fileName = time().'.'.$ext;
-            $file->move('upload/product',$fileName);
+
+            // OPSI ORIGINAL
+            // $file->move('upload/product',$fileName);
+            // $product->image = $fileName;
+
+            // OPSI PRODUCTION
+            $file->storeAs('public/product', $fileName);
             $product->image = $fileName;
         }
         
@@ -72,7 +78,11 @@ class ProductController extends Controller
             $file =  $request->File('image');
             $ext = $file->getClientOriginalExtension();
             $fileName = time().'.'.$ext;
-            $file->move('upload/product',$fileName);
+            // $file->move('upload/product',$fileName);
+            // $product->image = $fileName;
+
+            // OPSI PRODUCTION
+            $file->storeAs('public/product', $fileName);
             $product->image = $fileName;
         }
         $product->name = $request->input('name');

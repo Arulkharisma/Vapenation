@@ -27,7 +27,7 @@
                     <td >{{$item->name}}</td>
                     <td >{{$item->selling_price}}</td>
                     <td class="col-md-3 ">
-                        <img src="{{asset('upload/product/'.$item->image)}}" class="w-50 h-25" alt="Image Not Found">
+                        <img src="{{asset('storage/product/'.$item->image)}}" class="w-50 h-25" alt="Image Not Found">
                     </td>
                     <td>
                         <a class="btn btn-primary" href="{{url('edit-product/'.$item->id)}}">Edit</a>

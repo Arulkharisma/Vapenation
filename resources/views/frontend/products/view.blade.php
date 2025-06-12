@@ -68,7 +68,7 @@
             <div class="row g-4 align-items-start">
                 <!-- Gambar Produk -->
                 <div class="col-md-5 text-center">
-                    <img src="{{ asset('upload/product/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: contain;">
+                    <img src="{{ asset('storage/product/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: contain;">
                 </div>
 
                 <!-- Detail Produk -->

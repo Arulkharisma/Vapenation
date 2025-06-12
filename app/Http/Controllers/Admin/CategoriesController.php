@@ -31,7 +31,7 @@ class CategoriesController extends Controller
             // $file->move(public_path('images'), $fileName);
             // $category->image = $fileName;
 
-            // opsi keduaaaaaaaaa
+            // OPSI PRODUCTION
             $file->storeAs('public/category', $fileName);
             $category->image = $fileName;
         }
@@ -68,7 +68,12 @@ class CategoriesController extends Controller
             $file =  $request->File('image');
             $ext = $file->getClientOriginalExtension();
             $fileName = time().'.'.$ext;
-            $file->move('upload/category',$fileName);
+            // OPSI ORIGINAL
+            // $file->move('upload/category',$fileName);
+            // $category->image = $fileName;
+
+            // OPSI PRODUCTION
+            $file->storeAs('public/category', $fileName);
             $category->image = $fileName;
         }
         $category->name = $request->input('name');

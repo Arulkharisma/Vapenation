@@ -27,7 +27,7 @@
             @foreach ($cartItem as $item) 
             <div class="row product_data border-bottom border-light my-4 d-flex justify-content-around align-items-center " >
                 <div class="col-md-2">
-                    <img src="{{asset('upload/product/'.$item->products->image)}}" height="80px" width="90px" alt="Image Here">
+                    <img src="{{asset('storage/product/'.$item->products->image)}}" height="80px" width="90px" alt="Image Here">
                 </div>
                 <div class="col-md-3 text-center ">
                     <h5>{{$item->products->name}}</h5>
