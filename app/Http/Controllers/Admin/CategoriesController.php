@@ -32,16 +32,7 @@ class CategoriesController extends Controller
             // $category->image = $fileName;
 
             // opsi keduaaaaaaaaa
-            // $file->storeAs('public/category', $fileName);
-            // $category->image = 'storage/category/' . $fileName;
-
-            // ✅ Pastikan foldernya ada
-            Storage::makeDirectory('public/category');
-
-            // ✅ Simpan file ke storage/app/public/category
             $file->storeAs('public/category', $fileName);
-
-            // ✅ Simpan path untuk digunakan di view
             $category->image = 'storage/category/' . $fileName;
         }
 
