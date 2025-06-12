@@ -18,65 +18,39 @@ class CategoriesController extends Controller
     {
         return view('Admin.category.add');
     }
-    // public function insert(Request $request )
-    // {
-    //     $category = new Category();
-    //     if($request->hasFile('image'))
-    //     {
-    //         $file =  $request->File('image');
-    //         $ext = $file->getClientOriginalExtension();
-    //         $fileName = time().'.'.$ext;
-    //         $file->move('public/upload/category',$fileName);
-    //         $category->image = $fileName;
-    //     }
-
-    //     $category->name = $request->input('name');
-    //     $category->slug = $request->input('slug');
-    //     $category->description = $request->input('description');
-    //     $category->status = $request->input('status')   == True ? '1' : '0';
-    //     $category->popular = $request->input('popular')  == True ? '1' : '0';
-    //     $category->meta_title = $request->input('meta_title');
-    //     $category->meta_keyword = $request->input('meta_keyword');
-    //     $category->meta_description = $request->input('meta_description');
-
-    //     $category->save();
-    //     return redirect('/categories')->with('status',"Category Added Successfully");
-    // }
-
-    public function insert(Request $request)
+    public function insert(Request $request )
     {
         $category = new Category();
-
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
+        if($request->hasFile('image'))
+        {
+            $file =  $request->File('image');
             $ext = $file->getClientOriginalExtension();
-            $fileName = time() . '.' . $ext;
-
-            // Pastikan direktori upload/category tersedia
-            $uploadPath = public_path('upload/category');
-
-            if (!File::exists($uploadPath)) {
-                File::makeDirectory($uploadPath, 0755, true); // recursive true
-            }
-
-            // Pindahkan file ke direktori upload
-            $file->move($uploadPath, $fileName);
+            $fileName = time().'.'.$ext;
+            $file->move(public_path('upload/category'), $fileName);
+            // $file->move('upload/category',$fileName);
             $category->image = $fileName;
         }
+        $uploadPath = public_path('upload/category');
 
-        // Set data kategori
+        if (!File::exists($uploadPath)) {
+            File::makeDirectory($uploadPath, 0755, true);
+        }
+
+        if (!is_writable($uploadPath)) {
+            return "Folder tidak bisa ditulis: $uploadPath";
+        }
+
         $category->name = $request->input('name');
         $category->slug = $request->input('slug');
         $category->description = $request->input('description');
-        $category->status = $request->input('status') == true ? '1' : '0';
-        $category->popular = $request->input('popular') == true ? '1' : '0';
+        $category->status = $request->input('status')   == True ? '1' : '0';
+        $category->popular = $request->input('popular')  == True ? '1' : '0';
         $category->meta_title = $request->input('meta_title');
         $category->meta_keyword = $request->input('meta_keyword');
         $category->meta_description = $request->input('meta_description');
 
         $category->save();
-
-        return redirect('/categories')->with('status', "Category Added Successfully");
+        return redirect('/categories')->with('status',"Category Added Successfully");
     }
 
     public function edit($id)
