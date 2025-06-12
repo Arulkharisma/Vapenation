@@ -21,32 +21,67 @@ class CategoriesController extends Controller
     }
     public function insert(Request $request )
     {
-        $category = new Category();
-        if($request->hasFile('image'))
-        {
-            $file =  $request->File('image');
-            $ext = $file->getClientOriginalExtension();
-            $fileName = time().'.'.$ext;
-            // Originallllll
-            // $file->move('upload/category',$fileName);
-            // $category->image = $fileName;
+        // $category = new Category();
+        // if($request->hasFile('image'))
+        // {
+        //     $file =  $request->File('image');
+        //     $ext = $file->getClientOriginalExtension();
+        //     $fileName = time().'.'.$ext;
+        //     // Originallllll
+        //     // $file->move('upload/category',$fileName);
+        //     // $category->image = $fileName;
 
-            // opsi keduaaaaaaaaa
+        //     // opsi keduaaaaaaaaa
+        //     $file->storeAs('public/category', $fileName);
+        //     $category->image = 'storage/category/' . $fileName;
+        // }
+
+        // $category->name = $request->input('name');
+        // $category->slug = $request->input('slug');
+        // $category->description = $request->input('description');
+        // $category->status = $request->input('status')   == True ? '1' : '0';
+        // $category->popular = $request->input('popular')  == True ? '1' : '0';
+        // $category->meta_title = $request->input('meta_title');
+        // $category->meta_keyword = $request->input('meta_keyword');
+        // $category->meta_description = $request->input('meta_description');
+
+        // $category->save();
+        // return redirect('/categories')->with('status',"Category Added Successfully");
+
+
+        $category = new Category();
+
+        // Proses upload gambar
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            $fileName = time() . '.' . $ext;
+
+            // Buat folder jika belum ada
+            if (!Storage::exists('public/category')) {
+                Storage::makeDirectory('public/category');
+            }
+
+            // Simpan file di storage/app/public/category
             $file->storeAs('public/category', $fileName);
-            $category->image = 'storage/category/' . $fileName;
+
+            // Simpan hanya nama file ke database
+            $category->image = $fileName;
         }
 
+        // Simpan data lainnya
         $category->name = $request->input('name');
         $category->slug = $request->input('slug');
         $category->description = $request->input('description');
-        $category->status = $request->input('status')   == True ? '1' : '0';
-        $category->popular = $request->input('popular')  == True ? '1' : '0';
+        $category->status = $request->input('status') == true ? '1' : '0';
+        $category->popular = $request->input('popular') == true ? '1' : '0';
         $category->meta_title = $request->input('meta_title');
         $category->meta_keyword = $request->input('meta_keyword');
         $category->meta_description = $request->input('meta_description');
 
         $category->save();
-        return redirect('/categories')->with('status',"Category Added Successfully");
+
+        return redirect('/categories')->with('status', "Category Added Successfully");
     }
 
     public function edit($id)
