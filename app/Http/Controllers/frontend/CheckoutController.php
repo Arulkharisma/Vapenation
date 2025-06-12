@@ -32,7 +32,7 @@ class CheckoutController extends Controller
     {
         $order  = new Order();
         $order->user_id = Auth::id();
-        $order->fname = $request->input('fname');
+        // $order->fname = $request->input('fname');
         $order->lname = $request->input('lname');
         $order->email = $request->input('email');
         $order->phoneno = $request->input('phoneno');
