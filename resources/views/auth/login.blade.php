@@ -13,23 +13,19 @@ flex: 1;
 height: 1px;
 background: #eee;
 }
-.h-custom {
+/* .h-custom {
 height: calc(100% - 73px);
 }
 @media (max-width: 450px) {
 .h-custom {
 height: 100%;
 }
-}
+} */
 </style>
-<section class="vh-100 mt-5">
-  <div class="container-fluid h-custom">
-     <div class="row d-flex justify-content-center align-items-center h-100">
-        {{-- <div class="col-md-9 col-lg-6 col-xl-5">
-           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-              class="img-fluid" alt="Sample image">
-        </div> --}}
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 p-5" style="background-color: #23314D; border-radius: 10px; color: white">
+<section class="container">
+  <div class="h-custom container">
+     <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8 col-lg-6 col-xl-4 p-5 mb-5" style="background-color: #23314D; border-radius: 10px; color: white; margin-top: 100px">
            <form action="{{ route('login') }}" method="POST">
               @csrf
               <div class="d-flex flex-row align-items-center justify-content-center">

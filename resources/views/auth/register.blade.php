@@ -2,13 +2,13 @@
 {{-- @extends('layouts.app') --}}
 
 @section('content')
-<div class="container h-100 mt-5">
-  <div class="row d-flex justify-content-center align-items-center h-100">
-    <div class="col-lg-7 col-xl-11">
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="col-lg-6 col-xl-11">
       <div class="card border-0 text-black" style="border-radius: 25px;">
-        <div class="card-body border-0 p-md-5">
-          <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-12 col-xl-7 order-2 order-lg-1" style="background-color: #23314D; border-radius: 10px; color: white">
+        <div class="card-body border-0">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-12 col-lg-12 col-xl-7 order-2 order-lg-1" style="background-color: #23314D; border-radius: 10px; color: white; padding: 20px 70px; margin-top: 100px">
 
               <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Vape Nation</p>
               <h5 class="text-center fw-bold mb-5">Sing Up</h5>
